@@ -1,0 +1,22 @@
+<!-- src/main/resources/templates/files.html -->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>File Hoster - Files</title>
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+</head>
+<body>
+<nav>
+    <a href="/files" th:href="@{/files}">Files</a>
+    <a href="/upload" th:href="@{/upload}">Upload</a>
+</nav>
+<div>
+    <h1>List of files</h1>
+    <ul>
+        <li th:each="file : ${files}">
+            <a th:href="@{/files/{filename}(filename=${file.filename})}" th:text="${file.filename}">File</a> - <span th:text="${#numbers.formatDecimal(file.size / 1024, 1, 2)}">0</span> KB
+        </li>
+    </ul>
+</div>
+</body>
+</html>

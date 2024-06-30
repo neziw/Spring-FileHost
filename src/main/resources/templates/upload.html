@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>File Hoster - Upload</title>
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <script>
+        function validateForm(event) {
+            const fileInput = document.getElementById('fileInput');
+            const errorMessage = document.getElementById('errorMessage');
+            if (!fileInput.files.length) {
+                event.preventDefault();
+                errorMessage.textContent = 'Please select valid file.';
+                return false;
+            }
+            errorMessage.textContent = '';
+            return true;
+        }
+    </script>
+</head>
+<body>
+<nav>
+    <a href="/files" th:href="@{/files}">Files</a>
+    <a href="/upload" th:href="@{/upload}">Upload</a>
+</nav>
+<div>
+    <h1>Upload file</h1>
+    <form action="#" th:action="@{/upload}" method="post" enctype="multipart/form-data" onsubmit="validateForm(event)">
+        <input type="file" name="multipartFile" id="fileInput">
+        <button type="submit">Upload</button>
+        <p id="errorMessage" style="color: red;"></p>
+    </form>
+</div>
+</body>
+</html>
