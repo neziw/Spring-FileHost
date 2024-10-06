@@ -20,6 +20,7 @@ checkstyle {
 }
 
 repositories {
+	gradlePluginPortal()
 	mavenCentral()
 }
 
